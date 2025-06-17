@@ -8,7 +8,7 @@ vocab_size = len(chars)
 print(''.join(chars))
 print(vocab_size)
 
-# Translating individual characters into integers
+# Translating individual characters into integers and back (done on a character level)
 stoi = { ch:i for i,ch in enumerate(chars) }
 itos = { i:ch for i,ch in enumerate(chars) }
 encode = lambda s: [stoi[c] for c in s]             # encoder: takes a string, outputs a list of integers
