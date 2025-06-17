@@ -1,4 +1,7 @@
 # gpt_from_scratch_with_andrej_karpathy
+
+*** Building Character-level language model
+
 Coded after YT video by Andrej Karpathy - https://youtu.be/kCc8FmEb1nY?si=lXm5JiRPQxoWt5Pb
 
 Run this command to get dataset
