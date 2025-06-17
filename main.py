@@ -1,3 +1,5 @@
+import torch
+
 with open('input.txt', 'r', encoding='utf-8') as f:
     text = f.read()
 
@@ -16,3 +18,8 @@ decode = lambda l: ''.join([itos[i] for i in l] )   # decoder: takes a list of i
 
 print(encode("thees iS a MY striNG"))
 print(decode(encode("thees iS a MY striNG")))
+
+# Lets now encode the entire text dataset and store it into torch.Tensor
+data = torch.tensor(encode(text), dtype=torch.long)
+print(data.shape, data.dtype)
+print(data[:1000])
