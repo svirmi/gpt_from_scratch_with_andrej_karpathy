@@ -1,3 +1,4 @@
+from decimal import Context
 import torch
 
 with open('input.txt', 'r', encoding='utf-8') as f:
@@ -21,5 +22,22 @@ print(decode(encode("thees iS a MY striNG")))
 
 # Lets now encode the entire text dataset and store it into torch.Tensor
 data = torch.tensor(encode(text), dtype=torch.long)
-print(data.shape, data.dtype)
-print(data[:1000])
+# print(data.shape, data.dtype)
+# print(data[:1000])
+
+# Let's now split up the data into train and validations sets
+n = int(0.9 * len(data))  # the first 90% will be train, the rest - validation set
+train_data = data[:n]
+val_data = data[n:]
+
+block_size = 8 # sometimes called "context length"
+train_data[:block_size+1]
+
+
+x = train_data[:block_size]
+y = train_data[1:block_size+1]
+
+for t in range(block_size):
+    context = x[:t+1]
+    target = y[t]
+    print(f"when input {context} the target: {target}")
