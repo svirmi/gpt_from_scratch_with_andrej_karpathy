@@ -41,3 +41,12 @@ for t in range(block_size):
     context = x[:t+1]
     target = y[t]
     print(f"when input {context} the target: {target}")
+
+torch.manual_seed(1337)    
+batch_size = 4 # how many independent sequences will we process in parallele?
+block_size = 8 # what is the maximum context length for predictions?
+
+def get_batch(split):
+    # generaye a small batch of data inputs x and targets y
+    data = train_data if split == 'train' else val_data
+    ix = torch.randint(len(data) - block_size, (batch_size,))
